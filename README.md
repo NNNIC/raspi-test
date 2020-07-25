@@ -1,2 +1,2 @@
 # raspi-test
-Raspberry Test with StateGo
+Raspberry Pi Test with StateGo
