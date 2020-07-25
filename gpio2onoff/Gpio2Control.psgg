@@ -1,0 +1,750 @@
+﻿;PSGG Editor Backup File
+version=1.1
+file=Gpio2Control.xlsx
+guid=919d410c-1051-4b25-9d00-8c81b2495ace
+;set read_from  excel or psgg
+read_from=psgg
+;set savemode with_excel or psgg_only
+save_mode=psgg_only
+;set check_excel_writable yes or no
+check_excel_writable=no
+
+------#======*<Guid(D13821FE-FA27-4B04-834C-CEC1E5670F48)>*======#------
+
+sheet=state-chart
+nameid_list=,n001,n002,n003,n004,n017,n005,,n006,,n007,,n00a,,n00c,,n00e,,n019,n01a,n01b,,n018,,n010,n011,n012,n013,,n014,n015,n016,,,,
+stateid_list=,,,,,,,,,,,,,,,,,,,,,,,s0014,s0015,s0016,s0017,s0018,s0019,s001a,s001b,s001c,s001d,s001e,s001f,s0020,s0021,s0022
+max_name_id=27
+max_state_id=34
+[id_name_dic]
+n001=thumbnail
+n002=state
+n003=state-cmt
+n004=state-ref
+n005=nextstate
+n006=embed
+n007=init
+n00a=update
+n00c=wait
+n00e=post_wait
+n010=branch
+n011=branch-cmt
+n012=brcond
+n013=nowait
+n014=!dir
+n015=!pos
+n016=!uuid
+n017=state-typ
+n018=gosubstate
+n019=loop_init
+n01a=loop_cond
+n01b=loop_next
+
+
+[id_state_dic]
+s0014=S_START
+s0015=S_END
+s0016=S_EXPORT_GPIO2
+s0017=S_HELLOWORLD
+s0018=S_UNEXPORT_GPIO2
+s0019=S_ON
+s001a=S_OFF
+s001b=S_SLEEP
+s001c=S_SLEEP1
+s001d=S_LOP000
+s001e=S_SBS000
+s001f=S_RET000
+s0020=S_SLEEP2
+s0021=E_0001
+s0022=S_SLEEP3
+
+
+[s0014]
+n002=S_START
+n017=start
+n005=S_HELLOWORLD
+n014=@@@
+/
+(0,0)
+The root
+@@@
+
+n015=100,100
+n016=1
+
+[s0015]
+n002=S_END
+n017=end
+n014=@@@
+/
+(0,0)
+The root
+@@@
+
+n015=500,100
+n016=2
+
+[s0016]
+n002=S_EXPORT_GPIO2
+n005=S_SLEEP
+n007=@@@
+echo 2 > /sys/class/gpio/export
+sleepenh 1
+echo out > /sys/class/gpio/gpio2/direction
+@@@
+
+n014=@@@
+/
+(100,100)
+
+@@@
+
+n015=53,236
+n016=3
+
+[s0017]
+n002=S_HELLOWORLD
+n005=S_EXPORT_GPIO2
+n007=echo Hello World!
+n014=@@@
+/
+(100,100)
+
+@@@
+
+n015=244,90
+n016=4
+
+[s0018]
+n002=S_UNEXPORT_GPIO2
+n005=S_END
+n007=echo 2 > /sys/class/gpio/unexport
+n014=@@@
+/
+(0,0)
+
+@@@
+
+n015=644,269
+n016=5
+
+[s0019]
+n002=S_ON
+n005=S_SLEEP1
+n007=echo 1 > /sys/class/gpio/gpio2/value
+n014=@@@
+/
+(100,100)
+
+@@@
+
+n015=356,756
+n016=6
+
+[s001a]
+n002=S_OFF
+n005=S_RET000
+n007=echo 0 > /sys/class/gpio/gpio2/value
+n014=@@@
+/
+(0,0)
+
+@@@
+
+n015=701,750
+n016=7
+
+[s001b]
+n002=S_SLEEP
+n017=
+n005=S_LOP000
+n007=sleepenh 1
+n014=@@@
+/
+(100,100)
+
+@@@
+
+n015=45,418
+n016=8
+
+[s001c]
+n002=S_SLEEP1
+n005=S_OFF
+n007=sleepenh 1
+n014=@@@
+/
+(0,0)
+
+@@@
+
+n015=531,757
+n016=9
+
+[s001d]
+n002=S_LOP000
+n017=loop
+n005=S_SLEEP3
+n019=i = 0
+n01a=[ $i -lt 10 ]
+n01b=i=$i+1
+n018=S_SBS000
+n014=@@@
+/
+(100,100)
+
+@@@
+
+n015=46,521
+n016=10
+
+[s001e]
+n002=S_SBS000
+n017=substart
+n005=S_SLEEP2
+n014=@@@
+/
+(100,100)
+
+@@@
+
+n015=33,695
+n016=14
+
+[s001f]
+n002=S_RET000
+n017=subreturn
+n014=@@@
+/
+(100,100)
+
+@@@
+
+n015=931,798
+n016=12
+
+[s0020]
+n002=S_SLEEP2
+n005=S_ON
+n007=sleepenh 1
+n014=@@@
+/
+(0,0)
+
+@@@
+
+n015=141,747
+n016=13
+
+[s0021]
+n002=E_0001
+n006=declare -i i=0
+n014=@@@
+/
+(0,0)
+
+@@@
+
+n015=372,390
+n016=15
+
+[s0022]
+n002=S_SLEEP3
+n005=S_UNEXPORT_GPIO2
+n007=sleepenh 1
+n014=@@@
+/
+(0,0)
+
+@@@
+
+n015=321,492
+n016=16
+
+
+
+------#======*<Guid(70C5A739-223A-457D-8AEE-1A0E2050D5AE)>*======#------
+
+sheet=config
+
+###VARIOUS-CONTENTS-BEGIN###
+; The setting was created automatically. 2020/07/26 0:08:17
+; * pssgEditor version : 0.65.30181.c1f731a61c084a50af056af301b5a2c33505b45f
+psggfile=@@@
+Gpio2Control.psgg
+@@@
+xlsfile=@@@
+Gpio2Control.xlsx
+@@@
+guid=@@@
+919d410c-1051-4b25-9d00-8c81b2495ace
+@@@
+bitmap_width=5000
+bitmap_height=2000
+c_statec_cmt=1
+c_thumbnail=1
+c_contents=1
+force_display_outpin=0
+last_action=@@@
+mov,S_SLEEP2
+@@@
+target_pathdir=@@@
+/
+@@@
+state_location_list=@@@
+
+@@@
+nodegroup_comment_list=@@@
+[{"Key":"\/","Value":""}]
+@@@
+nodegroup_pos_list=@@@
+[{"Key":"\/","Value":{"x":0,"y":0}}]
+@@@
+fillter_state_location_list=@@@
+[{"Key":"\/","Value":[{"Key":"S_START","Value":{"x":100,"y":100}},{"Key":"S_END","Value":{"x":500,"y":100}},{"Key":"S_0001","Value":{"x":59,"y":190}},{"Key":"S_0002","Value":{"x":509,"y":407}},{"Key":"S_GOSUB1","Value":{"x":54,"y":330}},{"Key":"S_SUBSTART1","Value":{"x":67,"y":658}},{"Key":"S_0003","Value":{"x":183,"y":653}},{"Key":"S_RETURN1","Value":{"x":669,"y":660}},{"Key":"S_LOOP1","Value":{"x":317,"y":275}},{"Key":"S_0004","Value":{"x":726,"y":346}},{"Key":"S_RETURN2","Value":{"x":936,"y":467}},{"Key":"S_SUBSTART2","Value":{"x":347,"y":438}},{"Key":"E_0001","Value":{"x":372,"y":390}},{"Key":"S_0005","Value":{"x":709,"y":535}},{"Key":"S_GOSUB2","Value":{"x":434,"y":664}},{"Key":"S_SUBSTART3","Value":{"x":189,"y":826}},{"Key":"S_RETURN3","Value":{"x":590,"y":833}},{"Key":"S_0006","Value":{"x":337,"y":821}},{"Key":"S_START1","Value":{"x":91,"y":254}},{"Key":"S_SET_EXPORT","Value":{"x":249,"y":408}},{"Key":"S_SET_EXPORT1","Value":{"x":557,"y":414}},{"Key":"S_HELLOWORLD","Value":{"x":244,"y":90}},{"Key":"S_UNEXPORT","Value":{"x":557,"y":414}},{"Key":"S_EXPORT_GPIO2","Value":{"x":53,"y":236}},{"Key":"S_UNEXPORT_GPIO2","Value":{"x":644,"y":269}},{"Key":"S_EXPORT_GPIO3","Value":{"x":457,"y":663}},{"Key":"S_ON","Value":{"x":356,"y":756}},{"Key":"S_ON1","Value":{"x":515,"y":603}},{"Key":"S_OFF","Value":{"x":701,"y":750}},{"Key":"S_PAS000","Value":{"x":86,"y":473}},{"Key":"S_SLEEP","Value":{"x":45,"y":418}},{"Key":"S_SLEEP1","Value":{"x":531,"y":757}},{"Key":"S_LOP000","Value":{"x":46,"y":521}},{"Key":"S_GSB000","Value":{"x":52,"y":583}},{"Key":"S_RET000","Value":{"x":931,"y":798}},{"Key":"S_SLEEP2","Value":{"x":141,"y":747}},{"Key":"S_SBS000","Value":{"x":33,"y":695}},{"Key":"S_SLEEP3","Value":{"x":321,"y":492}}]}]
+@@@
+linecolor_data=@@@
+[{"color":{"knownColor":0,"name":null,"state":2,"value":4285493103},"pattern":"BACKTO_"}]
+@@@
+use_external_command=0
+external_command=@@@
+
+@@@
+source_editor_set=@@@
+
+@@@
+label_show=0
+label_text=@@@
+test
+@@@
+option_delete_thisstring=1
+option_delete_br_string=1
+option_delete_bracket_string=1
+option_delete_s_state_string=1
+option_copy_output_to_clipboard=0
+option_convert_with_confirm=0
+option_ignore_case_of_state=0
+option_editbranch_automode=1
+option_use_custom_prefix=0
+option_omit_basestate_string=0
+option_hide_basestate_contents=1
+option_hide_branchcmt_onbranchbox=0
+font_name=@@@
+MS UI Gothic
+@@@
+font_size=11
+comment_font_size=0
+contents_font_size=0
+state_width=140
+state_height=20
+state_short_width=50
+state_short_height=20
+comment_block_height=20
+content_max_height=200
+comment_block_fixed=0
+line_space=-1
+userbutton_title=@@@
+
+@@@
+userbutton_command=@@@
+
+@@@
+userbutton_callafterconvert=0
+itemeditform_size_list=@@@
+
+@@@
+decoimage_typ_name=@@@
+sym
+@@@
+
+###VARIOUS-CONTENTS-END###
+
+
+------#======*<Guid(70C5A739-223A-457D-8AEE-1A0E2050D5AE)>*======#------
+
+sheet=template-source
+
+###VARIOUS-CONTENTS-BEGIN###
+
+###VARIOUS-CONTENTS-END###
+
+
+------#======*<Guid(70C5A739-223A-457D-8AEE-1A0E2050D5AE)>*======#------
+
+sheet=template-statefunc
+
+###VARIOUS-CONTENTS-BEGIN###
+<<<?state/^C_/
+eof>>>
+#   [[state]]  [[state-cmt]]
+
+<<<?state/^E_/
+[[embed]]
+eof>>>
+
+<<<?state-typ/^start$/
+[[state]]()
+{
+    $macro:Goto([[nextstate]])$
+}
+eof>>>
+<<<?state-typ/^end$/
+[[state]]()
+{
+    echo .
+}
+eof>>>
+
+<<<?state-typ/^gosub$/
+[[state]]()
+{
+    $macro:Gosub([[gosubstate]],[[nextstate]])$
+}
+eof>>>
+
+<<<?state-typ/^substart$/
+[[state]]()
+{
+    $macro:Goto([[nextstate]])$
+}
+eof>>>
+
+<<<?state-typ/^subreturn$/
+[[state]]()
+{
+    $macro:Return$
+}
+eof>>>
+
+<<<?state-typ/^loop$/
+[[state]]()
+{
+    [[loop_init]]
+    $macro:Goto([[state]]_LoopCheckAndGosub____)$
+}
+[[state]]_LoopCheckAndGosub____()
+{
+    if [[loop_cond]]; then
+        $macro:Gosub([[gosubstate]],[[state]]_LoopNext____)$
+    else
+        $macro:Goto([[nextstate]])$
+    fi
+}
+[[state]]_LoopNext____()
+{
+    [[loop_next]]
+    $macro:Goto([[state]]_LoopCheckAndGosub____)$
+}
+eof>>>
+
+[[state]]()
+{
+    <<<?init
+    if [ $1 -eq 1 ]; then
+        [[init]]
+    fi
+    >>>
+
+    [[update]]
+
+    <<<?wait
+    if [[wait]]; then
+        return 0
+    fi
+    >>>
+
+    [[post_wait]]
+
+    <<<?branch
+    # branch
+    [[branch]]
+    >>>
+
+    <<<?nextstate
+    $macro:SetNextStateIf([[nextstate]])$
+    >>>
+
+}
+###VARIOUS-CONTENTS-END###
+
+
+------#======*<Guid(70C5A739-223A-457D-8AEE-1A0E2050D5AE)>*======#------
+
+sheet=setting.ini
+
+###VARIOUS-CONTENTS-BEGIN###
+[setting]
+
+psgg=Gpio2Control.psgg
+xls=Gpio2Control.xlsx
+sub_src=
+gen_src=Gpio2Control.sh
+macro_ini=
+
+manager_src=
+manager_dir=
+
+template_src=
+template_func=template-statefunc.txt
+
+help=help.ini
+helpweb=starterkit2\bash\helpweb.html
+
+src_enc=utf-8
+
+
+
+[setupinfo]
+
+starterkit=@@@
+https://github.com/NNNIC/psgg-starter-kit.git fb49dd424e62ef8f0dac7c7f49a7a8926df905da
+@@@
+
+
+
+lang=bash
+framework=
+
+statemachine=Gpio2Control
+prefix=__PREFIX__
+xlsdir=G:\statego\samples\raspi-test\gpio2onoff
+gendir=G:\statego\samples\raspi-test\gpio2onoff
+genrdir=.
+incrdir=.
+
+code_output_start=[SYN-G-GEN OUTPUT START]
+code_output_end=[SYN-G-GEN OUTPUT END]
+
+[jpn]
+
+title=Bash用スタートキット  2019/11/22
+
+detail=@@@
+Bash シェル用のステートマシンを作成します。
+
+# 作成ファイル
+
+      Gpio2Control.pssg   --- StateGo データファイル
+      Gpio2Control.sh  　 --- 変換コードを本ファイルに埋め込む。
+
+@@@
+
+
+
+[en]
+
+title=Bash STARTER KIT 2019/11/22
+
+detail=@@@
+This dialog will create files for a state machine.
+
+# File:
+
+      Gpio2Control.pssg  --- StateGo data file.
+      Gpio2Control.sh    --- The editor will insert converted source code to this file.
+
+@@@
+###VARIOUS-CONTENTS-END###
+
+
+------#======*<Guid(70C5A739-223A-457D-8AEE-1A0E2050D5AE)>*======#------
+
+sheet=help
+
+###VARIOUS-CONTENTS-BEGIN###
+[nextstate]
+
+jpn=次に実行するステートを指定する。
+en=Specify the next state to be executed.
+[branch]
+
+jpn=@@@
+分岐処理を指定する。
+１行に一つの分岐命令を書く。
+GUIにより上書きされるため引数は適当に指定する。
+例）
+br_YES(?);
+br_NO(?);
+br_UNKNOWN(?);
+@@@
+
+en=@@@
+Specify branch functions.
+Each line has a branch function.
+Specify a tentavie parameter for each branch function because GUI overwrites the parameter.
+i.e)
+br_YES(?);
+br_NO(?);
+br_UNKNOWN(?);
+@@@
+
+[update]
+
+jpn=更新処理を指定する。
+en=Specify a update process.
+[wait]
+
+jpn=@@@
+待ち条件を指定する。
+true時にループを解除する。
+@@@
+
+en=@@@
+Specify a waiting condition.
+Release the loop if the condition is true.
+@@@
+
+[gosubstate]
+
+en=Specify a subroutine
+jpn=サブルーチン指定
+[loop_next]
+
+en=Loop increment
+jpn=ループインクリメント
+[state]
+
+jpn=@@@
+ステート名を指定する。
+英文字、数字、アンダーバーで構成される。
+先頭は英文字およびアンダーバー。
+@@@
+
+en=@@@
+Specify a state name.
+The state name consits of alphabet, number and underbar except that the head characther should be alphabet or a underbar.
+@@@
+
+[members]
+
+jpn=メンバ変数及び関数等を指定する。
+en=@@@
+Specify members, variables, classes,  etc.
+@@@
+
+[post_wait]
+
+jpn='wait'後の処理を指定する。
+en=Specify the post process after 'wait'.
+[nowait]
+
+jpn=@@@
+次のステートへ同期待ちをせず実行する時に 'yes'を指定する。
+同期待ち時には何も指定しない。
+@@@
+
+en=@@@
+Specify 'yes' if the next state will be execute without a sync wait.
+Do not specify any word wheh the next state will be execute with a sync wait.
+@@@
+
+[embed]
+
+jpn=@@@
+コード埋め込み用。
+ステート名がE_時に利用可能。
+ステート機能は利用できない。
+@@@
+
+en=@@@
+For embedding code.
+Enable this section if state name starts with "E_".
+Disabled state features.
+@@@
+
+[!uuid]
+
+jpn=システムがステートのuuid指定に使用。
+en=@@@
+System uses this for the uuid of the state.
+@@@
+
+[init]
+
+jpn=初期化用処理を指定する。
+en=Specify a initial process.
+[!dir]
+
+jpn=システムがステートのディレクトリ指定に使用。
+en=@@@
+System uses this for the directory path of the state.
+@@@
+
+[loop_init]
+
+en=Loop Initialization
+jpn=ループ初期化
+[thumbnail]
+
+jpn=説明用のイメージを指定する。
+en=@@@
+Specify a image for explanation of this state.
+@@@
+
+[loop_cond]
+
+en=Loop condition
+jpn=ループ条件
+###VARIOUS-CONTENTS-END###
+
+
+------#======*<Guid(70C5A739-223A-457D-8AEE-1A0E2050D5AE)>*======#------
+
+sheet=itemsinfo
+
+###VARIOUS-CONTENTS-BEGIN###
+[inpmethod]
+
+nextstate=
+!pos=
+update=
+state=
+gosubstate=
+C_=
+loop_cond=
+loop_next=
+nowait=@@@
+*select
+nowait
+@@@
+
+branch=
+branch-cmt=
+post_wait=
+state-ref=
+brcond=
+S_=
+embed=
+!uuid=
+state-typ=
+init=
+!dir=
+wait=
+loop_init=
+thumbnail=
+E_=
+state-cmt=
+[stateloc]
+
+E_=S1
+S_=S0
+C_=S2
+[itemcond]
+
+state-typ=read_only,exclusion,(S0)
+gosubstate=read_only,exclusion,(S0)
+branch=read_only,exclusion,S0
+state=read_only,share,S.+
+nextstate=read_only,exclusion,S0
+return=read_only,exclusion,S0
+basestate=read_only,share,S.+
+brcond=read_only,exclusion,S0
+embed=read_only,exclusion,S1
+thumbnail=read_only,share,S.+
+###VARIOUS-CONTENTS-END###
+
+
+
+------#======*<Guid(4DC98CBA-6257-4E26-A454-A53F85BC234C)>*======#------
+
+
