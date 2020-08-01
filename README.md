@@ -37,4 +37,12 @@ Raspberry Pi Test with StateGo
 
 ![](https://raw.githubusercontent.com/NNNIC/raspi-test/master/wiki/7seg-chart.png)
 
+### Video
+
+[Video](https://www.youtube.com/watch?v=g20piryabHM&feature=youtu.be)
+
+### Referece
+
+[1)C言語でRaspberry Piを操作しよう](https://qiita.com/Brutus/items/54605b634c96b0b1e5cf)
+[2)GPIOでLEDの点滅(C言語)](http://make.bcde.jp/raspberry-pi/gpio%E3%81%A7led%E3%81%AE%E7%82%B9%E6%BB%85c%E8%A8%80%E8%AA%9E/)
 
