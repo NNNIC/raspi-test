@@ -5,7 +5,15 @@ Raspberry Pi Test with StateGo
 
 ## ON/OFF
 
+### Sorce
+
+./gpio2onoff
+
+### Chart
+
 ![](https://raw.githubusercontent.com/NNNIC/raspi-test/master/wiki/chart.png)
+
+## Video
 
 [Video](https://www.youtube.com/watch?v=6iUyzB-cveM&feature=youtu.be)
 
@@ -18,4 +26,15 @@ Raspberry Pi Test with StateGo
 1. Avoiding permission error, use sleep 1 sec.
 2. "apt" needs update.
 3. For sleep, use sleepenh
+
+## 7 Seg LED
+
+### Source
+
+./c/m1_7seg
+
+### Chart
+
+![](https://raw.githubusercontent.com/NNNIC/raspi-test/master/wiki/7seg-chart.png)
+
 

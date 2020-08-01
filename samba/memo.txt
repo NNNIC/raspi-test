@@ -1,0 +1,32 @@
+2020/7/28
+
+参考: https://qiita.com/Brutus/items/d3b3caee982852587b77
+
+上記の記事を参考に。
+
+違ったところ
+
+sambaの起動
+
+sudo /etc/init.d/samba-ad-sc restart 
+
+ipの調べ方
+https://tibbo-pi.co-works.co.jp/faq/ipaddress-confirmation-method/
+> ip a
+
+HUBがないため、ここまで 
+
+\\192.168.1.6:\share\
+
+
+いろいろできなかった原因
+
+Raspbery piの全体アップグレードの必要があった
+> sudo apt-get upgrade
+
+トラブル
+Desltopのファイルブラウザが開いた瞬間綴じる
+参考になった：https://www.raspberrypi.org/forums/viewtopic.php?t=257460
+以下を実行
+
+> sudo apt-get install pcmanfm
