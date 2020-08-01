@@ -19,7 +19,7 @@ Raspberry Pi Test with StateGo
 
 ### Reference
 
-[第9回「ラズベリーパイで電子工作！Lチカ…の前にLピカ！」](https://deviceplus.jp/hobby/raspberrypi_entry_009/)
+[第9回「ラズベリーパイで電子工作！Lチカ…の前にLピカ！」](https://deviceplus.jp/hobby/raspberrypi_entry_009/)    
 
 ### Troubleshooting memo
 
